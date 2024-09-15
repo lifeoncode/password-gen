@@ -2,6 +2,7 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useEffect, useState } from "react";
+import "./css/index.css";
 
 const App = () => {
   const [passwordLength, setPasswordLength] = useState(8);
@@ -26,13 +27,13 @@ const App = () => {
       });
   };
 
-  const shuffleOrder = (string) => {
-    let a = string.split(""),
+  const shuffleOrder = (str: string) => {
+    const a: string[] = str.split(""),
       n = a.length;
 
     for (let i = n - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      let tmp = a[i];
+      const j: number = Math.floor(Math.random() * (i + 1));
+      const tmp: string = a[i];
       a[i] = a[j];
       a[j] = tmp;
     }
@@ -77,7 +78,7 @@ const App = () => {
               min="8"
               max="32"
               value={passwordLength}
-              onChange={(e) => setPasswordLength(e.target.value)}
+              onChange={(e) => setPasswordLength(Number(e.target.value))}
             />
             <label htmlFor="length">{passwordLength}</label>
           </div>
